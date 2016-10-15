@@ -3,10 +3,10 @@ import moduleForAcceptance from 'notes/tests/helpers/module-for-acceptance';
 
 moduleForAcceptance('Acceptance | root');
 
-test('visiting /root', function(assert) {
-  visit('/root');
+test('visiting /', function(assert) {
+  visit('/');
 
   andThen(function() {
-    assert.equal(currentURL(), '/root');
+    assert.equal(currentURL(), '/');
   });
 });
