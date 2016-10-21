@@ -1,35 +1,35 @@
 /*jshint node:true*/
 module.exports = function(app) {
   var express = require('express');
-  var hamstersRouter = express.Router();
+  var notesRouter = express.Router();
 
-  hamstersRouter.get('/notes', function(req, res) {
+  notesRouter.get('/notes', function(req, res) {
     res.send({
       'data': []
     });
   });
 
-  hamstersRouter.post('/', function(req, res) {
+  notesRouter.post('/', function(req, res) {
     res.status(201).end();
   });
 
-  hamstersRouter.get('/:id', function(req, res) {
+  notesRouter.get('/:id', function(req, res) {
     res.send({
-      'hamsters': {
+      'notes': {
         id: req.params.id
       }
     });
   });
 
-  hamstersRouter.put('/:id', function(req, res) {
+  notesRouter.put('/:id', function(req, res) {
     res.send({
-      'hamsters': {
+      'notes': {
         id: req.params.id
       }
     });
   });
 
-  hamstersRouter.delete('/:id', function(req, res) {
+  notesRouter.delete('/:id', function(req, res) {
     res.status(204).end();
   });
 
@@ -42,6 +42,6 @@ module.exports = function(app) {
   // After installing, you need to `use` the body-parser for
   // this mock uncommenting the following line:
   //
-  //app.use('/api/hamsters', require('body-parser').json());
-  app.use('/api', hamstersRouter);
+  //app.use('/api/notes', require('body-parser').json());
+  app.use('/api', notesRouter);
 };
