@@ -3,9 +3,9 @@ module.exports = function(app) {
   var express = require('express');
   var hamstersRouter = express.Router();
 
-  hamstersRouter.get('/', function(req, res) {
+  hamstersRouter.get('/notes', function(req, res) {
     res.send({
-      'hamsters': []
+      'data': []
     });
   });
 
@@ -43,5 +43,5 @@ module.exports = function(app) {
   // this mock uncommenting the following line:
   //
   //app.use('/api/hamsters', require('body-parser').json());
-  app.use('/api/hamsters', hamstersRouter);
+  app.use('/api', hamstersRouter);
 };
