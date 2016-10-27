@@ -21,3 +21,25 @@ test('remove category query param from url', function(assert) {
     assert.equal(currentURL(), '/notes');
   });
 });
+
+test('filter by school on button click', function(assert) {
+  visit('/notes');
+
+  fillIn('input.school', "Emberschool");
+  click('input.submit-button');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/notes?school=Emberschool');
+  });
+});
+
+// TODO: trigger form submit on Enter key press
+// test('filter by category on form submit', function(assert) {
+  // visit('/notes');
+
+  // fillIn('input.category', "Testing");
+
+  // keyEvent('input.category', 'keypress', 13).then(function() {
+    // assert.equal(currentURL(), '/notes?category=Testing');
+  // });
+// });

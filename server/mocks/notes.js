@@ -4,8 +4,8 @@ module.exports = function(app) {
   var notesRouter = express.Router();
 
   notesRouter.get('/notes', function(req, res) {
-    console.log(req);
-    console.log(res);
+    // console.log(req);
+    // console.log(res);
 
     res.send({
       'data': []
