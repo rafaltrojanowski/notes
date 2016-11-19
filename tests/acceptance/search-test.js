@@ -18,7 +18,7 @@ test('opening routable search modal', function(assert) {
 
   andThen(function() {
     assert.equal(currentURL(), '/search');
-    assert.equal(find('h1').text(), 'Search modal here');
-    assert.equal(find('.ember-modal-dialog h2').text(), 'Fullscreen Search modal content');
+    assert.equal(find('h1').text(), 'Hello, Rafal!');
+    assert.equal(find('.ember-modal-dialog p').text(), 'What are you looking for, huh?');
   });
 });

@@ -3,7 +3,6 @@
 {{#link-to "notes" (query-params category="null") class="reset-query-param"}}Reset category{{/link-to}}
 {{#link-to "notes" (query-params category="jazz")}}Jazz{{/link-to}}
 
-
 <form class="form-horizontal category" {{action "updateParams" on="submit"}}>
   {{input class="category" value=searchQuery.category}}
   <!-- <input class="submit-button-category" type="submit" value="Submit">-->
