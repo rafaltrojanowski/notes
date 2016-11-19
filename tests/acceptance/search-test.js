@@ -11,3 +11,13 @@ test('visiting /', function(assert) {
     assert.equal(find('.navigation a#search').text(), 'Search');
   });
 });
+
+test('opening routable search modal', function(assert) {
+  visit('/');
+  click('.navigation a#search');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/search');
+    assert.equal(find('h1').text(), 'Search modal here');
+  });
+});
