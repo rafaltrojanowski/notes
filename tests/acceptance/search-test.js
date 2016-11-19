@@ -22,3 +22,14 @@ test('opening routable search modal', function(assert) {
     assert.equal(find('.ember-modal-dialog p').text(), 'What are you looking for, huh?');
   });
 });
+
+test('search by query', function(assert) {
+  visit('/search');
+
+  fillIn('input.search-query', 'watermelon');
+  click('input.submit-button');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/search?query=watermelon');
+  });
+});

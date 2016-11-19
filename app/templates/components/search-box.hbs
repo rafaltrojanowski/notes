@@ -1,3 +1,11 @@
 <h1>Hello, <strong>Rafal</strong>!</h1>
 
 <p>What are you looking for, huh?</p>
+
+<p>{{query}}</p>
+
+<form class="form-horizontal" {{action "updateParams" on="submit"}}>
+  {{input class="search-query" value=query}}
+  <input class="submit-button" type="submit" value="Submit">
+</form>
+
