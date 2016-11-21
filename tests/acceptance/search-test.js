@@ -43,3 +43,13 @@ test('search by query without submit', function(assert) {
     assert.equal(currentURL(), '/search');
   });
 });
+
+test('close search modal', function(assert) {
+  visit('/search');
+
+  click('a.search-close');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/');
+  });
+});

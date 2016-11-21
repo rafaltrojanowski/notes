@@ -1,3 +1,7 @@
 {{#full-screen-modal-dialog}}
+
+  {{#link-to "application" class='search-close'}}Close{{/link-to}}
+
   {{search-box updateParams=(action "updateParams") query=query}}
+
 {{/full-screen-modal-dialog}}
