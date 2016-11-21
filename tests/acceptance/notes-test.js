@@ -12,6 +12,15 @@ test('visiting /notes', function(assert) {
   });
 });
 
+
+test('render list of notes', function(assert) {
+  visit('/notes');
+
+  andThen(function() {
+    assert.equal(find('li:first').text(), 'Benfica');
+  });
+});
+
 test('remove category query param from url', function(assert) {
   visit('/notes?category=jazz');
 
