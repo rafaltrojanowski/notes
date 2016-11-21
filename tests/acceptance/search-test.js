@@ -54,12 +54,21 @@ test('close search modal', function(assert) {
   });
 });
 
-test('list all notes', function(assert) {
+test('query notes by title', function(assert) {
   server.createList('note', 10);
 
   visit('/search');
 
   andThen(function() {
-    assert.equal(find('ul.notes li:first').text(), 'Note#0');
+    assert.equal(find('ul.notes li').length, 0);
+  });
+
+
+  fillIn('input.search-query', 'Note#5');
+  click('input.submit-button');
+
+  andThen(function() {
+    assert.equal(find('ul.notes li').length, 1);
+    assert.equal(find('ul.notes li:first').text(), "Note#5");
   });
 });

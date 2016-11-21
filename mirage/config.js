@@ -2,8 +2,12 @@ export default function() {
 
   this.namespace = '/api';
 
-  this.get('/notes/', (schema)=> {
-    return schema.notes.all();
+  this.get('/notes/', (schema, request)=> {
+    if(request.queryParams.title === undefined) {
+      return schema.notes.all();
+    } else {
+      return schema.notes.where({title: request.queryParams.title});
+    }
   });
 
   // These comments are here to help you get started. Feel free to delete them.
