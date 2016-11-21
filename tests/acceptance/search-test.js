@@ -23,7 +23,7 @@ test('opening routable search modal', function(assert) {
   });
 });
 
-test('search by query', function(assert) {
+test('search by query and submit', function(assert) {
   visit('/search');
 
   fillIn('input.search-query', 'watermelon');
@@ -31,5 +31,15 @@ test('search by query', function(assert) {
 
   andThen(function() {
     assert.equal(currentURL(), '/search?query=watermelon');
+  });
+});
+
+test('search by query without submit', function(assert) {
+  visit('/search');
+
+  fillIn('input.search-query', 'wate');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/search');
   });
 });

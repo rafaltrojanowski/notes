@@ -1,10 +1,11 @@
 `import Ember from 'ember'`
 
 SearchBoxComponent = Ember.Component.extend(
-  query: ""
+  searchQuery: ""
 
   actions:
     updateParams: ->
+      @set('query', @get('searchQuery'))
       @sendAction('updateParams')
 )
 
