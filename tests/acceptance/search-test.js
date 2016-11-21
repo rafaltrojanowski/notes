@@ -55,9 +55,11 @@ test('close search modal', function(assert) {
 });
 
 test('list all notes', function(assert) {
+  server.createList('note', 10);
+
   visit('/search');
 
   andThen(function() {
-    assert.equal(find('ul.notes li:first').text(), 'Todo list');
+    assert.equal(find('ul.notes li:first').text(), 'Note#0');
   });
 });

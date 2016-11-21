@@ -14,10 +14,12 @@ test('visiting /notes', function(assert) {
 
 
 test('render list of notes', function(assert) {
+  server.createList('note', 10);
+
   visit('/notes');
 
   andThen(function() {
-    assert.equal(find('li:first').text(), 'Todo list');
+    assert.equal(find('li:first').text(), 'Note#0');
   });
 });
 
