@@ -58,6 +58,6 @@ test('list all notes', function(assert) {
   visit('/search');
 
   andThen(function() {
-    assert.equal(find('ul.notes likfirst').text(), 'Benfica');
+    assert.equal(find('ul.notes li:first').text(), 'Todo list');
   });
 });

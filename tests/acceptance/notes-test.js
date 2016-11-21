@@ -17,7 +17,7 @@ test('render list of notes', function(assert) {
   visit('/notes');
 
   andThen(function() {
-    assert.equal(find('li:first').text(), 'Benfica');
+    assert.equal(find('li:first').text(), 'Todo list');
   });
 });
 
