@@ -1,4 +1,6 @@
-export default function(/* server */) {
+export default function(server) {
+
+  server.createList('note', 10);
 
   /*
     Seed your development database using your factories.

@@ -1,19 +1,9 @@
 export default function() {
 
-  this.get('/api/notes/', ()=> {
-    return {
-      "data": [
-        {
-          "attributes": {
-            "title": "Todo list",
-          },
-          "id": "1",
-          "relationships": {},
-          "type": "notes",
-        }
-      ],
-      "included": []
-    };
+  this.namespace = '/api';
+
+  this.get('/notes/', (schema)=> {
+    return schema.notes.all();
   });
 
   // These comments are here to help you get started. Feel free to delete them.
