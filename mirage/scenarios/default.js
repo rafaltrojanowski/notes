@@ -1,6 +1,6 @@
 export default function(server) {
 
-  server.createList('note', 10);
+  server.createList('note', 100);
 
   /*
     Seed your development database using your factories.

@@ -2,6 +2,8 @@ import Ember from 'ember'
 
 export default Ember.Route.extend(
 
- model: (params) ->
-   @store.findAll('note')
+  setupController: (controller, model) ->
+    notes = @store.findAll('note')
+    controller.set('model', notes)
+
 )
