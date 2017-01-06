@@ -1,4 +1,4 @@
-import { test } from 'qunit';
+import { test, skip } from 'qunit';
 import moduleForAcceptance from 'notes/tests/helpers/module-for-acceptance';
 
 moduleForAcceptance('Acceptance | Search');
@@ -69,5 +69,57 @@ test('query notes by title', function(assert) {
   andThen(function() {
     assert.equal(find('ul.notes li').length, 1);
     assert.equal(find('ul.notes li:first').text().trim(), "Note#5");
+  });
+});
+
+test('click on close does redirect back to the previous route', function(assert) {
+  server.createList('note', 1);
+
+  visit('/notes');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/notes');
+  });
+
+  click('a#search');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/search');
+  });
+
+  // ensures that search path is not stored in localStorage as previous route
+  fillIn('input.search-query', 'Note#5');
+  click('input.submit-button');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/search?query=Note%235');
+  });
+
+  click('a.search-close');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/notes');
+  });
+});
+
+skip('click on close does redirect back to the previous route for single resource paths', function(assert) {
+  server.createList('note', 1);
+
+  visit('/notes/1');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/notes/1');
+  });
+
+  click('a#search');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/search');
+  });
+
+  click('a.search-close');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/notes/1');
   });
 });

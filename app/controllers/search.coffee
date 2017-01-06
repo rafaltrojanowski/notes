@@ -7,4 +7,9 @@ export default Ember.Controller.extend(
   actions:
     updateParams: ->
       @transitionToRoute('search', queryParams: { query: @get('query') })
+
+    close: ->
+      route = localStorage['lastVisitedRoute'] || "application"
+      this.transitionToRoute(route)
+
 )

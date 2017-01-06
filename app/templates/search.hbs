@@ -1,6 +1,6 @@
 {{#full-screen-modal-dialog}}
 
-  {{#link-to "application" class='search-close'}}Close{{/link-to}}
+  <a class='search-close' {{action "close"}}>Close</a>
 
   {{search-box updateParams=(action "updateParams") query=query}}
   {{search-results notes=model}}
