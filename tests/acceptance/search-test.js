@@ -63,12 +63,11 @@ test('query notes by title', function(assert) {
     assert.equal(find('ul.notes li').length, 0);
   });
 
-
   fillIn('input.search-query', 'Note#5');
   click('input.submit-button');
 
   andThen(function() {
     assert.equal(find('ul.notes li').length, 1);
-    assert.equal(find('ul.notes li:first').text(), "Note#5");
+    assert.equal(find('ul.notes li:first').text().trim(), "Note#5");
   });
 });

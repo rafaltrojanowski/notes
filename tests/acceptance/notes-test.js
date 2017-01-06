@@ -12,14 +12,27 @@ test('visiting /notes', function(assert) {
   });
 });
 
-
 test('render list of notes', function(assert) {
   server.createList('note', 10);
 
   visit('/notes');
 
   andThen(function() {
-    assert.equal(find('li:first').text(), 'Note#0');
+    assert.equal(find('li:first').text().trim(), 'Note#0');
+  });
+});
+
+test('allows to view note', function(assert) {
+  server.createList('note', 10);
+
+  visit('/notes');
+
+  // stop();
+
+  click('li.note a:first');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/notes/1');
   });
 });
 

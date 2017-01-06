@@ -15,6 +15,6 @@
 
 <ul class='notes'>
   {{#each model as |note|}}
-    <li>{{note.title}}</li>
+    {{note-item note=note}}
   {{/each}}
 </ul>
