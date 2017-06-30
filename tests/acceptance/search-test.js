@@ -60,7 +60,7 @@ test('query notes by title', function(assert) {
   visit('/search');
 
   andThen(function() {
-    assert.equal(find('ul.notes li').length, 0);
+    assert.equal(find('ul.notes li').length, 10);
   });
 
   fillIn('input.search-query', 'Note#5');

@@ -1,4 +1,4 @@
-import Ember from 'ember'
+import Ember from 'ember';
 
 export default Ember.Route.extend({
 
@@ -12,12 +12,12 @@ export default Ember.Route.extend({
     let previousRoutes = this.router.router.currentHandlerInfos;
     let previousRoute = previousRoutes && previousRoutes.pop();
 
-    if (previousRoute && previousRoute.name != 'search') {
-      localStorage['lastVisitedRoute'] = previousRoute.name
+    if (previousRoute && previousRoute.name !== 'search') {
+      localStorage['lastVisitedRoute'] = previousRoute.name;
     }
   },
 
-  model({ params }) {
+  model() {
     Ember.run.schedule('afterRender', this, this._fetchNotes);
   },
 
@@ -30,11 +30,11 @@ export default Ember.Route.extend({
     if (query) {
       store.query('note', { title: query })
         .then(this._loadNotes.bind(this))
-        .finally(this._done.bind(this))
+        .finally(this._done.bind(this));
     } else {
-      store.findAll('note')
+      store.findAll('note', { reload: true })
         .then(this._loadNotes.bind(this))
-        .finally(this._done.bind(this))
+        .finally(this._done.bind(this));
     }
   },
 

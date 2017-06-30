@@ -4,7 +4,9 @@
 
   {{search-box updateParams=(action "updateParams") query=query}}
 
-  {{isLoading}}
+  {{#if isLoading}}
+    Loading...
+  {{/if}}
 
   {{search-results notes=model}}
 
