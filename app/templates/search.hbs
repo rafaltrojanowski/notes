@@ -3,6 +3,9 @@
   <a class='search-close' {{action "close"}}>Close</a>
 
   {{search-box updateParams=(action "updateParams") query=query}}
+
+  {{isLoading}}
+
   {{search-results notes=model}}
 
 {{/full-screen-modal-dialog}}
