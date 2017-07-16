@@ -5,9 +5,23 @@ moduleForComponent 'search-results', 'Integration | Component | search results',
   integration: true
 }
 
-test 'it renders', (assert) ->
-  assert.expect 1
+test 'it renders notes', (assert) ->
+  assert.expect 2
 
-  @render hbs """{{search-results}}"""
+  note1 = Ember.Object.create(
+    id: 1,
+    title: 'hello world!'
+  )
 
-  assert.equal @$().text().trim(), ''
+  note2 = Ember.Object.create(
+    id: 2,
+    title: 'this is my first note'
+  )
+
+  notes = Ember.A([note1, note2])
+
+  @set('model', notes);
+  @render hbs """{{search-results notes=model}}"""
+
+  assert.equal @$('li.note:first').text().trim(), 'hello world!'
+  assert.equal @$('li.note:eq(1)').text().trim(), 'this is my first note'
