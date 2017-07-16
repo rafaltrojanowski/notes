@@ -17,32 +17,13 @@ export default Ember.Route.extend({
     }
   },
 
-  model() {
-    Ember.run.schedule('afterRender', this, this._fetchNotes);
-  },
+  model(params) {
+    let q = params.query;
 
-  _fetchNotes() {
-    let { controller, store } = this;
-    let { query } = controller;
-
-    controller.set('isLoading', true);
-
-    if (query) {
-      store.query('note', { title: query })
-        .then(this._loadNotes.bind(this))
-        .finally(this._done.bind(this));
+    if (q) {
+      return this.store.query('note', { title: q });
     } else {
-      store.findAll('note', { reload: true })
-        .then(this._loadNotes.bind(this))
-        .finally(this._done.bind(this));
+      return this.store.findAll('note', { reload: true });
     }
-  },
-
-  _loadNotes(notes) {
-    this.controller.set('model', notes);
-  },
-
-  _done() {
-    this.controller.set('isLoading', false);
   }
 });
