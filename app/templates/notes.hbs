@@ -1,0 +1,20 @@
+<h1>Hello, <strong>Rafal</strong>!</h1>
+
+{{#link-to "notes" (query-params category="null") class="reset-query-param"}}Reset category{{/link-to}}
+{{#link-to "notes" (query-params category="jazz")}}Jazz{{/link-to}}
+
+<form class="form-horizontal category" {{action "updateParams" on="submit"}}>
+  {{input class="category" value=searchQuery.category}}
+  <input class="submit-button-category" type="submit" value="Submit">
+</form>
+
+<form class="form-horizontal" {{action "updateParams" on="submit"}}>
+  {{input class="school" value=searchQuery.school}}
+  <input class="submit-button" type="submit" value="Submit">
+</form>
+
+<ul class='notes'>
+  {{#each model as |note|}}
+    {{note-item note=note}}
+  {{/each}}
+</ul>

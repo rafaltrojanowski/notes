@@ -4,8 +4,21 @@ module.exports = function(app) {
   var notesRouter = express.Router();
 
   notesRouter.get('/notes', function(req, res) {
+    console.log(req);
+    console.log(res);
+
     res.send({
-      'data': []
+      "data": [
+        {
+          "attributes": {
+            "title": "Benfica",
+          },
+          "id": "1",
+          "relationships": {},
+          "type": "notes"
+        }
+      ],
+      "included": []
     });
   });
 
@@ -41,7 +54,5 @@ module.exports = function(app) {
 
   // After installing, you need to `use` the body-parser for
   // this mock uncommenting the following line:
-  //
-  //app.use('/api/notes', require('body-parser').json());
   app.use('/api', notesRouter);
 };

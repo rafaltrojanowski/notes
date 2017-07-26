@@ -1,0 +1,13 @@
+{{#full-screen-modal-dialog}}
+
+  <a class='search-close' {{action "close"}}>Close</a>
+
+  {{search-box updateParams=(action "updateParams") query=query}}
+
+  {{#if isLoading}}
+    Loading...
+  {{/if}}
+
+  {{search-results notes=model}}
+
+{{/full-screen-modal-dialog}}
